@@ -154,7 +154,5 @@ The chatbot provides an engaging and professional user experience while helping 
 # Author
 Developed by: [Micahel King]
 
----
 
-# Video Presentation
-[Insert Unlisted YouTube Link Here]
+
