@@ -1,158 +1,141 @@
-# Cybersecurity Awareness Chatbot – Part 2 (WPF)
+Cybersecurity Awareness Bot (WPF Chatbot - POE Part 3)
+Project Overview
 
-## Introduction
-The Cybersecurity Awareness Chatbot is a modern desktop application developed using C# and Windows Presentation Foundation (WPF).  
+This project is a WPF-based Cybersecurity Awareness Chatbot developed in C# as part of a POE (Part 3) assessment.
 
-The purpose of this project is to educate users about important cybersecurity topics while providing an interactive and user-friendly chatbot experience.
+The chatbot is designed to educate users about cybersecurity concepts through:
 
-The chatbot helps users learn about:
-- Password safety
-- Phishing attacks
-- Online scams
-- Privacy protection
-- Malware
-- Safe browsing practices
+Interactive chat responses
+A cybersecurity quiz game
+Task management system
+Activity logging system
 
-The application combines cybersecurity education with modern GUI design features such as animations, dark/light mode, typing indicators, voice greetings, and personalised conversations.
+The application uses a graphical user interface (GUI) and simulates basic Natural Language Processing (NLP) using keyword detection.
 
----
+Features
+1. Chatbot System
+Responds to user input using keyword recognition
+Supports cybersecurity topics such as:
+Password safety
+Phishing awareness
+Malware protection
+Privacy protection
+Uses a dictionary-based response system with random replies
+2. Basic NLP Simulation
+Uses string matching (Contains) to detect user intent
+Recognises commands like:
+“password”
+“phishing”
+“malware”
+“privacy”
+“quiz”
+Interprets user input even if phrased differently (basic NLP simulation)
+3. Cybersecurity Quiz System
+Interactive quiz mode triggered by typing “quiz”
+Contains cybersecurity awareness questions such as:
+phishing
+malware
+VPN
+password safety
+Tracks:
+Current question
+Score
+Provides immediate feedback:
+Correct / Incorrect answers
+Displays final score at the end
+4. Task Assistant System
+Allows users to add cybersecurity-related tasks
+Tasks include:
+Title
+Description
+Reminder date (default: +1 day)
+Tasks are stored in a list (List<CyberTask>)
+Logs task creation in activity log
 
-# Features
+Note: Database helper is included for future MySQL integration but not fully implemented in current logic.
 
-## Graphical User Interface (GUI)
-The application uses a modern cyber-themed GUI inspired by messaging applications.
+5. Activity Log System
+Tracks user and system actions using a static log class
+Logs include:
+User login
+Task creation
+Quiz start
+Quiz completion
+Each log entry includes a timestamp
+Logs can be displayed in the chatbot interface
+6. Graphical User Interface (WPF)
+Built using XAML and C#
+Features:
+Chat message bubbles (user vs bot)
+Input textbox and send button
+Status display (user online / bot typing)
+Action buttons:
+Quiz
+Task
+Log
+Dark theme design with modern UI styling
+Project Structure
+Part2/
+│
+├── MainWindow.xaml        # UI Layout (WPF)
+├── MainWindow.xaml.cs     # Main application logic
+├── Chatbot.cs             # Response engine (keyword-based)
+├── CyberTask.cs           # Task model class
+├── QuizQuestion.cs        # Quiz question model
+├── ActivityLog.cs         # Logs user/system actions
+├── DatabaseHelper.cs      # MySQL connection helper (not fully used)
+Database (Prepared but not fully implemented)
 
-Features include:
-- Rounded message bubbles
-- User and bot chat alignment
-- Professional colour theme
-- Dark and light mode switching
-- Smooth layout and spacing
-- Typing animation
-- Timestamps
-- Cybersecurity logo integration
+The project includes a MySQL helper class:
 
----
+server=localhost;database=CyberBot;uid=root;pwd=password;
+Intended database features:
+Store tasks permanently
+Retrieve tasks on startup
+Update task status
+Delete tasks
 
-## Voice Greeting
-When the application starts, a recorded WAV voice greeting welcomes the user to the chatbot.
+Current version uses in-memory list for tasks.
 
----
-
-## Keyword Recognition
-The chatbot recognises cybersecurity-related keywords such as:
-- Password
-- Phishing
-- Privacy
-- Scam
-- Malware
-- VPN
-
-The bot then provides relevant cybersecurity advice.
-
----
-
-## Random Responses
-To make conversations more natural and engaging, the chatbot uses random responses for different cybersecurity topics.
-
-For example, phishing questions may generate different tips each time.
-
----
-
-## Memory and Recall
-The chatbot remembers:
-- The user’s name
-- Favourite cybersecurity topic
-- Previous conversation topics
-
-This allows the chatbot to personalise future responses.
-
----
-
-## Sentiment Detection
-The chatbot can detect simple emotions such as:
-- Worried
-- Curious
-- Confused
-- Frustrated
-
-The bot responds supportively to create a more natural conversation flow.
-
----
-
-# Technologies Used
-- C#
-- WPF (Windows Presentation Foundation)
-- .NET Framework
-- Visual Studio
-- GitHub
-- GitHub Actions
-
----
-
-# How to Run the Application
-
-1. Open the project in Visual Studio.
-2. Ensure the Assets folder contains:
-   - Greeting.wav
-   - logo.png
-3. Build the solution.
-4. Run the application.
-
----
-
-# Example Questions
-Users can ask questions such as:
-- “Tell me about password safety.”
-- “Give me a phishing tip.”
-- “I’m worried about scams.”
-- “Explain privacy.”
-- “Tell me more.”
-
----
-
-# Project Structure
-
-CyberSecurityBotWPF  
-│  
-├── Assets  
-│   ├── Greeting.wav  
-│   ├── logo.png  
-│  
-├── MainWindow.xaml  
-├── MainWindow.xaml.cs  
-├── Chatbot.cs  
-├── AudioPlayer.cs  
-├── App.xaml  
-├── App.xaml.cs  
-├── README.md  
-
----
-
-# GitHub Requirements Completed
-- Minimum of 6 meaningful commits
-- GitHub Actions Continuous Integration (CI)
-- Multiple releases/tags created
-- Multimedia assets included
-
----
-
-# Conclusion
-This project successfully demonstrates the use of:
-- GUI development using WPF
-- Object-Oriented Programming (OOP)
-- Lists and collections
-- Random responses
-- Memory and recall
-- Sentiment detection
-- Cybersecurity awareness education
-
-The chatbot provides an engaging and professional user experience while helping users learn how to stay safe online.
-
----
-
-# Author
-Developed by: [Micahel King]
-
-
-
+How to Run the Project
+1. Requirements
+Visual Studio (2019 or later)
+.NET WPF framework
+MySQL Connector (optional for future DB expansion)
+2. Steps
+Open solution in Visual Studio
+Build the project
+Run (Start Debugging)
+Enter your name to begin interaction
+Example Usage
+Chatbot Interaction
+User: phishing
+Bot: Phishing is a scam via email or messages.
+Quiz Mode
+User: quiz
+Bot: What is malware?
+User: malicious software
+Bot: Correct!
+Task System
+User: (adds task)
+Bot: Task added: Cyber Task
+Activity Log
+12:00:01 - User logged in
+12:00:10 - Task Added: Cyber Task
+12:01:05 - Quiz started
+Key Concepts Used
+Object-Oriented Programming (OOP)
+WPF GUI development (XAML)
+Event-driven programming
+Dictionary-based chatbot responses
+Basic NLP simulation using string matching
+Activity tracking system
+Modular class design
+Future Improvements
+Full MySQL integration for tasks and quiz results
+Advanced NLP (sentence parsing or AI-based responses)
+Improved task UI (view/edit/delete in interface)
+User authentication system
+Notification/reminder system
+Enhanced quiz UI with multiple-choice buttons
+Author : Mikael
